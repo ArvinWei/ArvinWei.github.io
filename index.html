@@ -1,278 +1,171 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <title>Arvin Blog</title>
-  <meta name="author" content="魏扬乐">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Arvin Blog">
 
   
-  <meta property="og:site_name" content="Arvin Blog"/>
-
   
-    <meta property="og:image" content=""/>
   
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Arvin Blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="/js/jquery.min.js"></script>
-
   
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45019001-1', 'topdna.org');
-  ga('send', 'pageview');
-</script>
-
-
 </head>
 
+<!--
+<body class="home-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
 
-<body>
-  <!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0027_Simplified Chinese.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Arvin Blog</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="http://traceinvest.com">TraceInvest</a></li>
-    
-      <li><a href="/categories/essay/">随感</a></li>
-    
-      <li><a href="/categories/tech/">技术</a></li>
-    
-      <li><a href="/categories/investment/">理财</a></li>
-    
-      <li><a href="/categories/life/">生活</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div>
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Arvin Blog</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
 </header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
+
+      
+<main class="content" role="main">
+  
   <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <time datetime="2018-09-17T03:22:50.000Z"><a href="/2018/09/17/第二篇博客/">2018-09-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/09/17/第二篇博客/">第二篇博客</a></h1>
-  
-
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-09-17T03:22:50.000Z" itemprop="datePublished">
+          2018-09-17
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/09/17/第二篇博客/">第二篇博客</a></h2>
     </header>
-    <div class="entry">
+    <section class="post-excerpt">
+      <p>
       
-        <p>使用 Hexo + GitHub 可以轻松搞出一个好看的博客</p>
-<p>以下是步骤。</p>
-<p>1、进入一个安全的目录，比如 cd ~/Desktop 或者 cd ~/Documents，别在根目录 / 瞎搞。以后所有的教程第一步都是「进入一个安全的目录，别在根目录瞎搞」，只有 ~ 里面的目录是你能碰的！</p>
-<p>2、在 GitHub 上新建一个空 repo，repo 名称是「你的用户名.github.io」（注意个用户名是你的GitHub用户名，不是你的电脑用户名）</p>
-<p>3、npm install -g hexo-cli，安装 Hexo</p>
-<p>4、hexo init myBlog</p>
-<p>5、cd myBlog</p>
-<p>6、npm i</p>
-<p>7、hexo new 开博大吉，你会看到一个 md 文件的路径</p>
-<p>8、open xxxxxxxxxxxxxxxxxxx.md，编辑这个 md 文件，内容自己想，写完按command+s保存</p>
-<p>9、start _config.yml，编辑网站配置<br>  把第 6 行的 title 改成你想要的名字<br>  把第 9 行的 author 改成你的大名<br>  把最后一行的 type 改成 type: git<br>  在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （请将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头你知道吧？不知道？不知道的话现在你知道了）<br>  第 4 步的 repo: 后面有个空格，不要眼瞎。<br>  写完按command+s保存</p>
-<p>10、npm install hexo-deployer-git –save，安装 git 部署插件</p>
-<p>11、hexo deploy</p>
-<p>12、进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接</p>
-<p>13、你现在应该看到了你的博客</p>
-
+        使用 Hexo + GitHub 可以轻松搞出一个好看的博客
+以下是步骤。
+1、进入一个安全的目录，比如 cd ~/Desktop 或者 cd ~/Documents，别在根目录 / 瞎搞。以后所有的教程第一步都是「进入一个安全的目录，别在根目录瞎搞」，只有 ~ 里面的目录是你能碰的！
+2、在 GitHub 上新建一个空 repo，repo 名称是「你的用户名.github.io」（注意个用户名是你的GitHub用户名，不是你的电脑用户
       
-    </div>
-    <footer>
+      </p>
       
-        
-        
+      <p>
+          <a href="/2018/09/17/第二篇博客/" class="excerpt-link">Read More...</a>
+      </p>
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
+    </section>
+  </article>
+  
   <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <time datetime="2018-09-17T02:59:50.088Z"><a href="/2018/09/17/开博大吉/">2018-09-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/09/17/开博大吉/"></a></h1>
-  
-
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-09-17T02:59:50.088Z" itemprop="datePublished">
+          2018-09-17
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/09/17/开博大吉/"></a></h2>
     </header>
-    <div class="entry">
-      
-        <hr>
-<p>title: 开博大吉<br>date: 2018-09-17 10:59:50<br>tags:<br>—第一次尝试用hexo这个平台写博客，纪念一下</p>
-
-      
-    </div>
-    <footer>
+    <section class="post-excerpt">
+      <p>
       
         
-        
+title: 开博大吉date: 2018-09-17 10:59:50tags:—第一次尝试用hexo这个平台写博客，纪念一下
+
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
+      </p>
+      
+      <p>
+          <a href="/2018/09/17/开博大吉/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
   <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <time datetime="2018-09-17T02:58:08.398Z"><a href="/2018/09/17/hello-world/">2018-09-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/09/17/hello-world/">Hello World</a></h1>
-  
-
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-09-17T02:58:08.398Z" itemprop="datePublished">
+          2018-09-17
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/09/17/hello-world/">Hello World</a></h2>
     </header>
-    <div class="entry">
+    <section class="post-excerpt">
+      <p>
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new p
+      
+      </p>
+      
+      <p>
+          <a href="/2018/09/17/hello-world/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">Page 1 of 1</span>
+    
+  </nav>
+</main>
+
 
       
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Arvin Blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
-</article>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
 
 
 
 
 
-
-
-<ul class="page-direction" id="page-direction">
-    <li><a class="page-prev" href="javascript:;" title="Prev">
-      <span class="icon-stack">
-        <i class="icon-circle icon-stack-base"></i>
-        <i class="icon-angle-left"></i>
-      </span>
-    <li><a class="page-next" href="javascript:;" title="Next">
-      <span class="icon-stack">
-        <i class="icon-circle icon-stack-base"></i>
-        <i class="icon-angle-right"></i>
-      </span>
-    </a></li>
-</ul>
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="text" name="q" results="0" placeholder="Search">
-    <i class="icon-search"></i>
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-
-  <div class="trace-invest">
-    <span>
-        <a href="http://traceinvest.com" target="_blank">欢迎光临我的美股投资相关网站 :</br>traceinvest.com</a>
-    </span>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2018/09/17/第二篇博客/">第二篇博客</a>
-      </li>
-    
-      <li>
-        <a href="/2018/09/17/开博大吉/"></a>
-      </li>
-    
-      <li>
-        <a href="/2018/09/17/hello-world/">Hello World</a>
-      </li>
-    
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
   </div>
-  <div id="go-pg-top"><i class="icon-arrow-up"></i></div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2018 魏扬乐
-  
 </div>
-<div class="clearfix"></div></footer>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
 
+<nav  class="outer-nav top horizontal">
 
+          <a class="icon-home"  href="/"><span>Home</span></a>
 
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" charset="utf-8" src="/js/page.js"></script>
+          <a class="icon-image"  href="/images"><span>Images</span></a>
 
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
 
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/about/2014-09-11-mabao/"><span>Contact</span></a>
+
+</nav>
+
+</div>
 </body>
-
 </html>
