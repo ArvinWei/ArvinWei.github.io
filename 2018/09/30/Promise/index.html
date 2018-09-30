@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Arvin Wei&#39;s Studio</title>
+    <title>Promise笔记 · Arvin Wei&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Arvin&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Promise笔记</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Arvin's Studio.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Promise笔记
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Promise">Promise</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">856</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/09/30</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,88 +399,55 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/30/Promise/" >
-            
-                <span>Promise笔记</span>
-        </a>
-        <div class="abstract-content">
-            Promise对象
-Promise 表示一个异步操作的最终结果，与之进行交...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Promise">Promise</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Promise对象</p>
+<p>Promise 表示一个异步操作的最终结果，与之进行交互的方式主要是 then 方法，该方法注册了两个回调函数，用于接收 promise 的终值或本 promise 不能执行的原因。</p>
+<p>Promise 的状态</p>
+<p>一个 Promise 的当前状态必须为以下三种状态中的一种：等待态（Pending）、执行态（Fulfilled）和拒绝态（Rejected）。</p>
+<p>–异步操作未完成（pending）<br>–异步操作成功（fulfilled）<br>–异步操作失败（rejected）</p>
+<p>基本用法</p>
+<p>Promise是一个构造函数，Promise接收一个参数，这个参数是函数，同时这个参数函数要传入两个参数：resolve，reject，分别表示异步操作执行成功后的回调函数和异步操作执行失败后的回调函数。</p>
+<p>Promise对象上有then、catch等方法</p>
+<p>var getAjax = function (url) {<br>    const promise=new Promise(function(resolve,reject){<br>    var xhr=new XMLHttpRequest()<br>    xhr.onreadystatechange=function(){<br>        if(xhr.readyState!==4){<br>            return<br>        }<br>        if(xhr.status===200){<br>            resolve(‘成功时调用resolve函数，并返回一个Promise对象’)<br>        }else{<br>            reject(new Error(xhr.statusText))<br>        }<br>    }<br>    xhr.open(‘GET’,url)<br>    xhr.send()<br>    })<br>    return promise//返回promise对象<br>}<br>getAjax(‘./ajax.html’)<br>    .then((data)=&gt;{<br>            console.log(‘第一个参数: ‘+ data)//打印resolve函数传递的参数<br>            return (‘第一个then的第一个参数’)//返回一个Promise对象并将数据传递给下一个then<br>        },(data)=&gt;{<br>            console.log(‘第二个参数: ‘+ data)//打印reject函数传递的参数<br>            return(‘第一个then的第二个参数’)//返回一个Promise对象并将数据传递给下一个then<br>            }<br>        )<br>    .then((data)=&gt;{<br>        //如果刚开始在getAjax函数中是调用reject函数，第一个then方法才会执行第二个参数，但是后面的then方法只执行第一个参数<br>            console.log(‘第一个参数: ‘+ data)//打印上一个then方法传递的参数<br>            return (‘第二个then的第一个参数’)<br>        },(data)=&gt;{<br>            console.log(‘第二个参数: ‘+ data)<br>            return (‘第二个then的第二个参数’)<br>        }<br>    )<br>    .then((data)=&gt;{<br>            console.log(‘第一个参数: ‘+ data)<br>        },(data)=&gt;{<br>            console.log(‘第二个参数: ‘+ data)<br>        }<br>    )</p>
+<p>异步操作成功时调用resolve:<br>  第一个参数：成功时调用resolve函数，并返回一个Promise对象<br>  第一个参数：第一个then的第一个参数<br>  第一个参数：第二个then的第一个参数</p>
+<p>异步操作失败时调用reject:<br>   第二个参数：Error ：Not Found<br>   第一个参数：第一个then的第二个参数<br>   第一个参数：第二个then的第一个参数</p>
+<p>总结：<br>–Promise是一个构造函数，通过new命令创建promise对象。在创建对象的时候传递一个参数，这个参数是一个函数，这个函数有两个参数，这两个参数分别是resolve和reject，它们是两个函数，由 JavaScript 引擎提供，不用自己实现。成功时调用resolve方法，失败时调用reject方法。</p>
+<p>–在promise对象上有then方法，这个方法可以传递两个参数，这两个参数是函数。</p>
+<p>–如果调用resolve函数，就会调用then方法的第一个参数。如果调用的是reject函数，就会调用then方法的第二个参数。不管第一个then调用第一个参数还是第二个参数，第一个then方法后面的then方法都会执行第一个参数。</p>
+<p>–resolve方法和reject方法需要带参数，这个参数会传递给then方法对应的参数 。在then方法中返回数据时，可以传递给下一个then方法。</p>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/21/Cookie/" >
-            
-                <span>HTTP系列 -- 注册登录 + Cookie</span>
-        </a>
-        <div class="abstract-content">
-            概述
-我们每天在使用电脑的时候都会去注册或者登录，作为前端是必须要了解其中...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/17/第二篇博客/" >
-            
-                <span>使用 Hexo + GitHub 可以轻松搞出一个好看的博客</span>
-        </a>
-        <div class="abstract-content">
-            使用 Hexo + GitHub 可以轻松搞出一个好看的博客
-以下是步骤。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/09/21/Cookie/" title= "HTTP系列 -- 注册登录 + Cookie">
+                    <div class="prevTitle">HTTP系列 -- 注册登录 + Cookie</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -504,6 +532,24 @@ Promise 表示一个异步操作的最终结果，与之进行交...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -645,6 +691,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
