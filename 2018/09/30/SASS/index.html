@@ -413,28 +413,24 @@ height:50vh;
 <p>ul {<br>    background: white;<br>    }<br>}</p>
 </blockquote>
 <p>变量</p>
-<p>$grey: #666;<br>$border-width: 2px;</p>
-<p>.nav {<br>  border: $border-width solid $grey;</p>
+<p>$grey: #666;<br>$border-width: 2px;<br>.nav {<br>  border: $border-width solid $grey;</p>
 <blockquote>
 <p>ul {<br>    background: white;<br>    }<br>}<br>方便统一改样式，只需要改一处就行</p>
 </blockquote>
 <p>mixin</p>
 <p>可以把一堆代码写到一个地方，取个名字，然后在下面复用，如下：</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>@mixin debug {<br>  border: 1px solid red;<br>  background: $grey;<br>}</p>
-<p>.nav {<br>  @include debug;</p>
+<p>$grey: #666;<br>$border-width: 2px;<br>@mixin debug {<br>  border: 1px solid red;<br>  background: $grey;<br>}<br>.nav {<br>  @include debug;</p>
 <blockquote>
 <p>ul {<br>    background: white;<br>    }<br>}</p>
 </blockquote>
 <p>高级用法，可以将其写成函数并带有参数，参数可以有默认值：</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>@mixin debug($border-color: red) {<br>  border: 1px solid $border-color;<br>  background: $grey;<br>}</p>
-<p>.nav {<br>  @include debug;</p>
+<p>$grey: #666;<br>$border-width: 2px;<br>@mixin debug($border-color: red) {<br>  border: 1px solid $border-color;<br>  background: $grey;<br>}<br>.nav {<br>  @include debug;</p>
 <blockquote>
 <p>ul {<br>    background: white;<br>li {<br>        @include debug(green)<br>      }<br>    }<br>}</p>
 </blockquote>
 <p>placeholder</p>
 <p>将要用同样样式的选择器放在了一起，节省了样式的代码。（mixin并没节省代码，只是复制粘贴了）</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>%debug($border-color: red) {<br>  border: 1px solid $border-color;<br>  background: $grey;<br>}</p>
-<p>.nav {<br>  @extend debug;</p>
+<p>$grey: #666;<br>$border-width: 2px;<br>%debug($border-color: red) {<br>  border: 1px solid $border-color;<br>  background: $grey;<br>}<br>.nav {<br>  @extend debug;</p>
 <blockquote>
 <p>ul {<br>    background: white;<br>li {<br>        @extend debug(green)<br>      }<br>    }<br>}</p>
 </blockquote>
@@ -583,8 +579,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
     
     
     
