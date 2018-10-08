@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Arvin Wei&#39;s Studio</title>
+    <title>原型与原型链 · Arvin Wei&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Arvin&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">原型与原型链</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Arvin's Studio.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            原型与原型链
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "原型链">原型链</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">705</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/10/08</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,40 +399,59 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/30/SASS/" >
-            
-                <span>SASS的用法</span>
-        </a>
-        <div class="abstract-content">
-            SASS就是去掉了分号和括号的一门语言
-SCSSSCSS就是基于SASS语...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SASS">SASS</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>这些全局变量分为两种：</p>
+<p>一种是 ECMAScript 规定的，比如：global.parseInt，global.parseFloat，global.Number</p>
+<p>一种是浏览器自己加的属性，比如：window.alert，window.prompt，window.comfirm</p>
+<p>所有 API 都可以在 MDN 里找到详细的资料。这里我主要说的是第一种。</p>
+<p>每当我们建一个新的对象时，我们似乎总是能用一大堆原先并没有定义的方法，这是为啥呢？因为有原型这个神奇的东西存在，每当我们申明的时候，他就会自动建立一个<strong>proto</strong>属性与所对应的方法的原型相连，这样我们就共用了原型的方法</p>
+<p>讲真话，看到这个我就发愁，又是个自己不太说的清的，于是我选择先上图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12035179-b31c7691406b6166.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="图片上传失败..."></p>
+<p>简单的来说，我们要搞清楚原型链的架构，首先就要明白js的内置方法如何被构建起来的，由于js的垃圾回收机制，当一个对象未被引用的时候，就会被视作垃圾，于是就会被清除，但是我们发现Number，String这些方法都没有被清除，这就让人啧啧称奇了。这其实就是在每个对象内部加上了一个prototype属性，叫做该对象的原型属性，又给每个对象加上<strong>proto</strong>,叫做原型链指针，他指向本对象的原型对象，用这种方法使得每个对象相互连接。每当我们声明一个对象时，它就会去找到他所对应的方法的原型，然后予以连接，这也就能在建立一个对象以后，他能拥有许多你本身并没有定义的方法的原因，如图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12035179-ec16d3987041ed68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/484/format/webp" alt="图片上传失败..."></p>
+<p>此时，我声明了变量a，但是我并没有给a定义方法，但我toString却没有错，就是因为我的<strong>proto</strong>属性已经有了这个方法，所以不报错。</p>
+<p>那么每个对象的原型链指针（<strong>proto</strong>）指向谁呢？内置对象的原型对象指向Function的原型,包括内置对象Function自己的，如图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12035179-8e580960341a1b4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/476/format/webp" alt="图片上传失败..."></p>
+<p>但是，内置对象的原型对象（Function.prototype）的原型对象是谁呢？因为他本身就是个对象啊，于是他就指向对象的原型对象，于是</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12035179-c4bec7fea286f179.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/459/format/webp" alt="图片上传失败..."></p>
+<p>也就是说，我们以后看见一个兑现，就判断他是属于啥方法，接着就归到啥方法的原型中去就好了</p>
+<p>给出公式：</p>
+<p>Object.<strong>proto</strong>    ===    对应方法的原型.prototype;</p>
+<p>再举一个例子，还是那个空对象a,a的原型链指向应该是Object的原型，因为他就是Object方法构造出来的，而a.<strong>proto</strong>.<strong>proto</strong>（a的原型的原型链指向）就应该是null,因为他就是object.prototype.<strong>proto</strong>，值为null</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12035179-32befefb21e15777.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/433/format/webp" alt="图片上传失败..."></p>
+
     </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/10/08/从URL到页面展现发生了什么/" title= "从URL到页面展现发生了什么">
+                    <div class="prevTitle">从URL到页面展现发生了什么</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -456,6 +536,24 @@ SCSSSCSS就是基于SASS语...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -643,6 +741,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
