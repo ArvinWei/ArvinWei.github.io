@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">280</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">320</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,39 +401,16 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>SASS</p>
-<p>就是去掉了分号和括号的一门语言</p>
-<p>SCSS</p>
-<p>SCSS就是基于SASS语言的一套更适合前端工程师看的语言</p>
-<p>npm init -y<br>npm i -D parcel<br>npx parcel index.html</p>
+        <h1 id="SASS"><a href="#SASS" class="headerlink" title="SASS"></a>SASS</h1><p>就是去掉了分号和括号的一门语言</p>
+<h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><p>SCSS就是基于SASS语言的一套更适合前端工程师看的语言<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i -D parcel</span><br><span class="line">npx parcel index.html</span><br></pre></td></tr></table></figure></p>
 <p>可以自动的去编译SCSS的在线工具<br>还可以在codepen上自己切换SCSS的工具</p>
-<p>嵌套选择器</p>
-<p>.nav {<br>  border: 1px solid;</p>
-<blockquote>
-<p>ul {<br>    background: white;<br>    }<br>}</p>
-</blockquote>
-<p>变量</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>.nav {<br>  border: $border-width solid $grey;</p>
-<blockquote>
-<p>ul {<br>    background: white;<br>    }<br>}<br>方便统一改样式，只需要改一处就行</p>
-</blockquote>
+<h2 id="嵌套选择器"><a href="#嵌套选择器" class="headerlink" title="嵌套选择器"></a>嵌套选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.nav &#123;</span><br><span class="line">  border: 1px solid;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">.nav &#123;</span><br><span class="line">  border: $border-width solid $grey;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方便统一改样式，只需要改一处就行</p>
 <p>mixin</p>
-<p>可以把一堆代码写到一个地方，取个名字，然后在下面复用，如下：</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>@mixin debug {<br>  border: 1px solid red;<br>  background: $grey;<br>}<br>.nav {<br>  @include debug;</p>
-<blockquote>
-<p>ul {<br>    background: white;<br>    }<br>}</p>
-</blockquote>
-<p>高级用法，可以将其写成函数并带有参数，参数可以有默认值：</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>@mixin debug($border-color: red) {<br>  border: 1px solid $border-color;<br>  background: $grey;<br>}<br>.nav {<br>  @include debug;</p>
-<blockquote>
-<p>ul {<br>    background: white;<br>li {<br>        @include debug(green)<br>      }<br>    }<br>}</p>
-</blockquote>
-<p>placeholder</p>
-<p>将要用同样样式的选择器放在了一起，节省了样式的代码。（mixin并没节省代码，只是复制粘贴了）</p>
-<p>$grey: #666;<br>$border-width: 2px;<br>%debug($border-color: red) {<br>  border: 1px solid $border-color;<br>  background: $grey;<br>}<br>.nav {<br>  @extend debug;</p>
-<blockquote>
-<p>ul {<br>    background: white;<br>li {<br>        @extend debug(green)<br>      }<br>    }<br>}</p>
-</blockquote>
+<p>可以把一堆代码写到一个地方，取个名字，然后在下面复用，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">@mixin debug &#123;</span><br><span class="line">  border: 1px solid red;</span><br><span class="line">  background: $grey;</span><br><span class="line">&#125;</span><br><span class="line">.nav &#123;</span><br><span class="line">  @include debug;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>高级用法，可以将其写成函数并带有参数，参数可以有默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">@mixin debug($border-color: red) &#123;</span><br><span class="line">  border: 1px solid $border-color;</span><br><span class="line">  background: $grey;</span><br><span class="line">&#125;</span><br><span class="line">.nav &#123;</span><br><span class="line">  @include debug;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">      &gt; li &#123;</span><br><span class="line">        @include debug(green)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">placeholder</span><br></pre></td></tr></table></figure></p>
+<p>将要用同样样式的选择器放在了一起，节省了样式的代码。（mixin并没节省代码，只是复制粘贴了）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">%debug($border-color: red) &#123;</span><br><span class="line">  border: 1px solid $border-color;</span><br><span class="line">  background: $grey;</span><br><span class="line">&#125;</span><br><span class="line">.nav &#123;</span><br><span class="line">  @extend debug;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">      &gt; li &#123;</span><br><span class="line">        @extend debug(green)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
     </article>
     <!-- license  -->
@@ -571,7 +548,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SASS"><span class="toc-number">1.</span> <span class="toc-text">SASS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SCSS"><span class="toc-number">2.</span> <span class="toc-text">SCSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌套选择器"><span class="toc-number">2.1.</span> <span class="toc-text">嵌套选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">2.2.</span> <span class="toc-text">变量</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -584,6 +561,12 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
@@ -671,9 +654,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
-    
         <span class="sidebar-tag-name" data-tags="Promise"><span class="iconfont-archer">&#xe606;</span>Promise</span>
+    
+        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
     
         <span class="sidebar-tag-name" data-tags="综合问题"><span class="iconfont-archer">&#xe606;</span>综合问题</span>
     

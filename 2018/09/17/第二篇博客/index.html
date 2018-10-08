@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">402</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">389</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -395,21 +395,36 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>使用 Hexo + GitHub 可以轻松搞出一个好看的博客</p>
+        <p>##使用 Hexo + GitHub 可以轻松搞出一个好看的博客</p>
 <p>以下是步骤。</p>
-<p>1、进入一个安全的目录，比如 cd ~/Desktop 或者 cd ~/Documents，别在根目录 / 瞎搞。以后所有的教程第一步都是「进入一个安全的目录，别在根目录瞎搞」，只有 ~ 里面的目录是你能碰的！</p>
-<p>2、在 GitHub 上新建一个空 repo，repo 名称是「你的用户名.github.io」（注意个用户名是你的GitHub用户名，不是你的电脑用户名）</p>
-<p>3、npm install -g hexo-cli，安装 Hexo</p>
-<p>4、hexo init myBlog</p>
-<p>5、cd myBlog</p>
-<p>6、npm i</p>
-<p>7、hexo new 开博大吉，你会看到一个 md 文件的路径</p>
-<p>8、open xxxxxxxxxxxxxxxxxxx.md，编辑这个 md 文件，内容自己想，写完按command+s保存</p>
-<p>9、start _config.yml，编辑网站配置<br>  把第 6 行的 title 改成你想要的名字<br>  把第 9 行的 author 改成你的大名<br>  把最后一行的 type 改成 type: git<br>  在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （请将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头你知道吧？不知道？不知道的话现在你知道了）<br>  第 4 步的 repo: 后面有个空格，不要眼瞎。<br>  写完按command+s保存</p>
-<p>10、npm install hexo-deployer-git –save，安装 git 部署插件</p>
-<p>11、hexo deploy</p>
-<p>12、进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接</p>
-<p>13、你现在应该看到了你的博客</p>
+<ol>
+<li><p>进入一个安全的目录，比如 cd ~/Desktop 或者 cd ~/Documents，别在根目录 / 瞎搞。以后所有的教程第一步都是「进入一个安全的目录，别在根目录瞎搞」，只有 ~ 里面的目录是你能碰的！</p>
+</li>
+<li><p>在 GitHub 上新建一个空 repo，repo 名称是「你的用户名.github.io」（注意个用户名是你的GitHub用户名，不是你的电脑用户名）</p>
+</li>
+<li><p>npm install -g hexo-cli，安装 Hexo</p>
+</li>
+<li><p>hexo init myBlog</p>
+</li>
+<li><p>cd myBlog</p>
+</li>
+<li><p>npm i</p>
+</li>
+<li><p>hexo new 开博大吉，你会看到一个 md 文件的路径</p>
+</li>
+<li><p>open xxxxxxxxxxxxxxxxxxx.md，编辑这个 md 文件，内容自己想，写完按command+s保存</p>
+</li>
+<li><p>start _config.yml，编辑网站配置<br>把第 6 行的 title 改成你想要的名字<br>把第 9 行的 author 改成你的大名<br>把最后一行的 type 改成 type: git<br>在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （请将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头你知道吧？不知道？不知道的话现在你知道了）<br>第 4 步的 repo: 后面有个空格，不要眼瞎。<br>写完按command+s保存。</p>
+</li>
+<li><p>npm install hexo-deployer-git –save，安装 git 部署插件</p>
+</li>
+<li><p>hexo deploy</p>
+</li>
+<li><p>进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接</p>
+</li>
+<li><p>你现在应该看到了你的博客</p>
+</li>
+</ol>
 
     </article>
     <!-- license  -->
@@ -596,6 +611,12 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 5
@@ -642,9 +663,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
-    
         <span class="sidebar-tag-name" data-tags="Promise"><span class="iconfont-archer">&#xe606;</span>Promise</span>
+    
+        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
     
         <span class="sidebar-tag-name" data-tags="综合问题"><span class="iconfont-archer">&#xe606;</span>综合问题</span>
     

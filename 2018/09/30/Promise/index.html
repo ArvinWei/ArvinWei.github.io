@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">856</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">906</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,21 +401,29 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Promise对象</p>
-<p>Promise 表示一个异步操作的最终结果，与之进行交互的方式主要是 then 方法，该方法注册了两个回调函数，用于接收 promise 的终值或本 promise 不能执行的原因。</p>
+        <h1 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a>Promise对象</h1><p>Promise 表示一个异步操作的最终结果，与之进行交互的方式主要是 then 方法，该方法注册了两个回调函数，用于接收 promise 的终值或本 promise 不能执行的原因。</p>
 <p>Promise 的状态</p>
 <p>一个 Promise 的当前状态必须为以下三种状态中的一种：等待态（Pending）、执行态（Fulfilled）和拒绝态（Rejected）。</p>
-<p>–异步操作未完成（pending）<br>–异步操作成功（fulfilled）<br>–异步操作失败（rejected）</p>
-<p>基本用法</p>
-<p>Promise是一个构造函数，Promise接收一个参数，这个参数是函数，同时这个参数函数要传入两个参数：resolve，reject，分别表示异步操作执行成功后的回调函数和异步操作执行失败后的回调函数。</p>
-<p>Promise对象上有then、catch等方法</p>
-<p>var getAjax = function (url) {<br>    const promise=new Promise(function(resolve,reject){<br>    var xhr=new XMLHttpRequest()<br>    xhr.onreadystatechange=function(){<br>        if(xhr.readyState!==4){<br>            return<br>        }<br>        if(xhr.status===200){<br>            resolve(‘成功时调用resolve函数，并返回一个Promise对象’)<br>        }else{<br>            reject(new Error(xhr.statusText))<br>        }<br>    }<br>    xhr.open(‘GET’,url)<br>    xhr.send()<br>    })<br>    return promise//返回promise对象<br>}<br>getAjax(‘./ajax.html’)<br>    .then((data)=&gt;{<br>            console.log(‘第一个参数: ‘+ data)//打印resolve函数传递的参数<br>            return (‘第一个then的第一个参数’)//返回一个Promise对象并将数据传递给下一个then<br>        },(data)=&gt;{<br>            console.log(‘第二个参数: ‘+ data)//打印reject函数传递的参数<br>            return(‘第一个then的第二个参数’)//返回一个Promise对象并将数据传递给下一个then<br>            }<br>        )<br>    .then((data)=&gt;{<br>        //如果刚开始在getAjax函数中是调用reject函数，第一个then方法才会执行第二个参数，但是后面的then方法只执行第一个参数<br>            console.log(‘第一个参数: ‘+ data)//打印上一个then方法传递的参数<br>            return (‘第二个then的第一个参数’)<br>        },(data)=&gt;{<br>            console.log(‘第二个参数: ‘+ data)<br>            return (‘第二个then的第二个参数’)<br>        }<br>    )<br>    .then((data)=&gt;{<br>            console.log(‘第一个参数: ‘+ data)<br>        },(data)=&gt;{<br>            console.log(‘第二个参数: ‘+ data)<br>        }<br>    )</p>
-<p>异步操作成功时调用resolve:<br>  第一个参数：成功时调用resolve函数，并返回一个Promise对象<br>  第一个参数：第一个then的第一个参数<br>  第一个参数：第二个then的第一个参数</p>
-<p>异步操作失败时调用reject:<br>   第二个参数：Error ：Not Found<br>   第一个参数：第一个then的第二个参数<br>   第一个参数：第二个then的第一个参数</p>
-<p>总结：<br>–Promise是一个构造函数，通过new命令创建promise对象。在创建对象的时候传递一个参数，这个参数是一个函数，这个函数有两个参数，这两个参数分别是resolve和reject，它们是两个函数，由 JavaScript 引擎提供，不用自己实现。成功时调用resolve方法，失败时调用reject方法。</p>
-<p>–在promise对象上有then方法，这个方法可以传递两个参数，这两个参数是函数。</p>
-<p>–如果调用resolve函数，就会调用then方法的第一个参数。如果调用的是reject函数，就会调用then方法的第二个参数。不管第一个then调用第一个参数还是第二个参数，第一个then方法后面的then方法都会执行第一个参数。</p>
-<p>–resolve方法和reject方法需要带参数，这个参数会传递给then方法对应的参数 。在then方法中返回数据时，可以传递给下一个then方法。</p>
+<ol>
+<li>异步操作未完成（pending）</li>
+<li>异步操作成功（fulfilled）</li>
+<li>异步操作失败（rejected）</li>
+</ol>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>Promise是一个构造函数，Promise接收一个参数，这个参数是函数，同时这个参数函数要传入两个参数：resolve，reject，分别表示异步操作执行成功后的回调函数和异步操作执行失败后的回调函数。</p>
+<p>Promise对象上有then、catch等方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var getAjax = function (url) &#123;</span><br><span class="line">    const promise=new Promise(function(resolve,reject)&#123;</span><br><span class="line">    var xhr=new XMLHttpRequest()</span><br><span class="line">    xhr.onreadystatechange=function()&#123;</span><br><span class="line">        if(xhr.readyState!==4)&#123;</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        if(xhr.status===200)&#123;</span><br><span class="line">            resolve(&apos;成功时调用resolve函数，并返回一个Promise对象&apos;)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            reject(new Error(xhr.statusText))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.open(&apos;GET&apos;,url)</span><br><span class="line">    xhr.send()</span><br><span class="line">    &#125;)</span><br><span class="line">    return promise//返回promise对象</span><br><span class="line">&#125;</span><br><span class="line">getAjax(&apos;./ajax.html&apos;)</span><br><span class="line">    .then((data)=&gt;&#123;</span><br><span class="line">            console.log(&apos;第一个参数: &apos;+ data)//打印resolve函数传递的参数</span><br><span class="line">            return (&apos;第一个then的第一个参数&apos;)//返回一个Promise对象并将数据传递给下一个then</span><br><span class="line">        &#125;,(data)=&gt;&#123;</span><br><span class="line">            console.log(&apos;第二个参数: &apos;+ data)//打印reject函数传递的参数</span><br><span class="line">            return(&apos;第一个then的第二个参数&apos;)//返回一个Promise对象并将数据传递给下一个then</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    .then((data)=&gt;&#123;</span><br><span class="line">        //如果刚开始在getAjax函数中是调用reject函数，第一个then方法才会执行第二个参数，但是后面的then方法只执行第一个参数</span><br><span class="line">            console.log(&apos;第一个参数: &apos;+ data)//打印上一个then方法传递的参数</span><br><span class="line">            return (&apos;第二个then的第一个参数&apos;)</span><br><span class="line">        &#125;,(data)=&gt;&#123;</span><br><span class="line">            console.log(&apos;第二个参数: &apos;+ data)</span><br><span class="line">            return (&apos;第二个then的第二个参数&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    .then((data)=&gt;&#123;</span><br><span class="line">            console.log(&apos;第一个参数: &apos;+ data)</span><br><span class="line">        &#125;,(data)=&gt;&#123;</span><br><span class="line">            console.log(&apos;第二个参数: &apos;+ data)</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></p>
+<p>异步操作成功时调用resolve:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一个参数：成功时调用resolve函数，并返回一个Promise对象</span><br><span class="line">第一个参数：第一个then的第一个参数</span><br><span class="line">第一个参数：第二个then的第一个参数</span><br></pre></td></tr></table></figure></p>
+<p>异步操作失败时调用reject:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第二个参数：Error ：Not Found</span><br><span class="line">第一个参数：第一个then的第二个参数</span><br><span class="line">第一个参数：第二个then的第一个参数</span><br></pre></td></tr></table></figure></p>
+<p>总结：</p>
+<ol>
+<li><p>Promise是一个构造函数，通过new命令创建promise对象。在创建对象的时候传递一个参数，这个参数是一个函数，这个函数有两个参数，这两个参数分别是resolve和reject，它们是两个函数，由 JavaScript 引擎提供，不用自己实现。成功时调用resolve方法，失败时调用reject方法。</p>
+</li>
+<li><p>在promise对象上有then方法，这个方法可以传递两个参数，这两个参数是函数。</p>
+</li>
+<li><p>如果调用resolve函数，就会调用then方法的第一个参数。如果调用的是reject函数，就会调用then方法的第二个参数。不管第一个then调用第一个参数还是第二个参数，第一个then方法后面的then方法都会执行第一个参数。</p>
+</li>
+<li><p>resolve方法和reject方法需要带参数，这个参数会传递给then方法对应的参数 。在then方法中返回数据时，可以传递给下一个then方法。</p>
+</li>
+</ol>
 
     </article>
     <!-- license  -->
@@ -553,7 +561,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Promise对象"><span class="toc-number">1.</span> <span class="toc-text">Promise对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-number">1.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -566,6 +574,12 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
@@ -653,9 +667,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
-    
         <span class="sidebar-tag-name" data-tags="Promise"><span class="iconfont-archer">&#xe606;</span>Promise</span>
+    
+        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
     
         <span class="sidebar-tag-name" data-tags="综合问题"><span class="iconfont-archer">&#xe606;</span>综合问题</span>
     
