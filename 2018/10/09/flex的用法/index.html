@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Wei Yangle">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Wei Yangle">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>flex布局 · Arvin Wei&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/tabs.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Arvin&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">flex布局</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Arvin's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            flex布局
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "flex布局">flex布局</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/10/09</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Flex 布局，可以实现各种页面布局。目前，它已经得到了所有浏览器的支持。Webkit 内核的浏览器，必须加上<code>-webkit</code>前缀。<br>Flex 是 Flexible Box 的缩写，意为”弹性布局”。</p>
+<h2 id="一、Flex的基本概念"><a href="#一、Flex的基本概念" class="headerlink" title="一、Flex的基本概念"></a>一、Flex的基本概念</h2><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-567c24a8a3badefb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/426/format/webp" alt="图片上传失败..."></p>
+<p>容器默认存在两根轴：默认水平的为主轴（main axis）和垂直的为交叉轴（cross axis）。主轴的开始位置叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
+<p>需要注意的是：当元素设为 Flex 布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效。</p>
+<h2 id="二、将元素指定为Flex布局"><a href="#二、将元素指定为Flex布局" class="headerlink" title="二、将元素指定为Flex布局"></a>二、将元素指定为Flex布局</h2><p>可以将任何容器指定为Flex布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>行内元素也可以使用 Flex 布局。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">   display: inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Webkit 内核的浏览器，必须加上<code>-webkit</code>前缀。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">   display: -webkit-flex; /* Safari */</span><br><span class="line">   display: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三、容器属性详述"><a href="#三、容器属性详述" class="headerlink" title="三、容器属性详述"></a>三、容器属性详述</h2><p>容器的属性有6个。</p>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<h3 id="1-flex-direction"><a href="#1-flex-direction" class="headerlink" title="1.flex-direction"></a>1.flex-direction</h3><p><code>flex-direction</code>属性决定主轴的方向，即项目排列的方向。</p>
+<p>可能有4个值</p>
+<ul>
+<li>row（默认值）:主轴为水平方向，项目沿主轴从左至右排列</li>
+<li>column：主轴为竖直方向，项目沿主轴从上至下排列</li>
+<li>row-reverse：主轴水平，项目从右至左排列，与row反向</li>
+<li>column-reverse：主轴竖直，项目从下至上排列，与column反向</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    border: 1px solid black;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.item&#123;</span><br><span class="line">    margin-left: 1px;</span><br><span class="line">    margin-top: 1px;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 20px;</span><br><span class="line">    border: 1px solid black;</span><br><span class="line">    border-radius: 20px;</span><br><span class="line">    background: black;</span><br><span class="line">    color: red;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"> &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;1&lt;/span&gt; </span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;2&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;3&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;4&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;5&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;6&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    border: 1px solid black;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-17ae05ff0ff67428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/104/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-970ec33b7da67084.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/104/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-fd2260d02eb2e0c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-75df0b7286b23b55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/110/format/webp" alt="图片上传失败..."></p>
+<h3 id="2-flex-wrap属性"><a href="#2-flex-wrap属性" class="headerlink" title="2.flex-wrap属性"></a>2.flex-wrap属性</h3><p>默认情况下，项目都排在一条线上，即主轴上。<code>flex-wrap</code>属性定义，当一条轴线排不下时，是否换行和方式。</p>
+<p>可能有3个值</p>
+<ul>
+<li>nowrap（默认）</li>
+<li>wrap</li>
+<li>wrap-reverse</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-458e7ea70e39f9e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/104/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-c249f4205e61206e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-fd7a7da4e2a7f07f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/100/format/webp" alt="图片上传失败..."></p>
+<h3 id="3-flex-flow"><a href="#3-flex-flow" class="headerlink" title="3.flex-flow"></a>3.flex-flow</h3><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+<h3 id="4-justify-content属性"><a href="#4-justify-content属性" class="headerlink" title="4.justify-content属性"></a>4.justify-content属性</h3><p><code>justify-content</code>属性定义了项目在主轴上的对齐方式。</p>
+<p>可能的值有：flex-start（默认），flex-end，center，space-between，space-around。当主轴沿水平方向时，具体含义为</p>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center：居中对齐</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-46e6d56ee96a4665.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-a0e19f0a2747faff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-e9b1334641ff13ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/105/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-2ebb6f4150d16ab3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-76fbaa0a6baeabf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<h3 id="5-align-items属性"><a href="#5-align-items属性" class="headerlink" title="5.align-items属性"></a>5.align-items属性</h3><p><code>align-items</code>属性定义项目在交叉轴上如何对齐。</p>
+<p>可能的值有：</p>
+<ul>
+<li>flex-start：交叉轴的起点对齐</li>
+<li>flex-end：交叉轴的终点对齐</li>
+<li>center：交叉轴的中点对齐</li>
+<li>baseline：项目的第一行文字的基线对齐</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-a0591e2f2c0b6cb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-185a94c264bcf64a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/108/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-57292b08d1b4cce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-bc6db804d6d8f67d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/108/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-2e6acddb0f2e7207.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<h3 id="6-align-content属性"><a href="#6-align-content属性" class="headerlink" title="6.align-content属性"></a>6.align-content属性</h3><p><code>align-content</code>属性定义了多根轴线（即item不止一行时）的对齐方式。如果项目只有一根轴线，该属性不起作用。<br>注意当有多行时，定义了align-content后，align-items属性将失效。align-content可能值含义如下（假设主轴为水平方向）：</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐</li>
+<li>flex-end：与交叉轴的终点对齐</li>
+<li>center：与交叉轴的中点对齐</li>
+<li>space- between：与交叉轴两端对齐，轴线之间的间隔平均分布</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍</li>
+<li>stretch（默认值）：轴线占满整个交叉轴</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-04262dae70215ca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-e5409ba100b90164.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-fdd2ee52f28ccd88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/108/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-a872892bdf375bf5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-ffc27629710cc6a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-c0cfe2582c54b58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/109/format/webp" alt="图片上传失败..."></p>
+<h2 id="四、项目属性详述"><a href="#四、项目属性详述" class="headerlink" title="四、项目属性详述"></a>四、项目属性详述</h2><p>项目一共有六个属性：</p>
+<ul>
+<li><code>order</code></li>
+<li><code>flex-grow</code></li>
+<li><code>flex-shrink</code></li>
+<li><code>flex-basis</code></li>
+<li><code>flex</code></li>
+<li><code>align-self</code></li>
+</ul>
+<h3 id="1-order属性"><a href="#1-order属性" class="headerlink" title="1.order属性"></a>1.order属性</h3><p>order的值是整数，默认为0，整数越小，item排列越靠前。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> .item:nth-child(1)&#123;</span><br><span class="line">    order: 4;</span><br><span class="line"> &#125;</span><br><span class="line"> .item:nth-child(1)&#123;</span><br><span class="line">    order: 3;</span><br><span class="line"> &#125;</span><br><span class="line"> .item:nth-child(1)&#123;</span><br><span class="line">    order: 2;</span><br><span class="line"> &#125;</span><br><span class="line"> .item:nth-child(1)&#123;</span><br><span class="line">    order: 1;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;1&lt;/span&gt; </span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;2&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;3&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;4&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;5&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;item&quot;&gt;6&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-89706e66300d6561.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<h3 id="2-flex-grow属性"><a href="#2-flex-grow属性" class="headerlink" title="2.flex-grow属性"></a>2.flex-grow属性</h3><p>定义了当flex容器有多余空间时，item是否放大。默认值为0，即当有多余空间时也不放大；可能的值为整数，表示不同item的放大比例。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-dcd801a723f67750.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/113/format/webp" alt="图片上传失败..."></p>
+<p>注意：当在容器中定义了<code>flex-wrap: nowrap</code>，而且空间不足的情况下，则没有放大的效果。</p>
+<h3 id="3-flex-shrink"><a href="#3-flex-shrink" class="headerlink" title="3.flex-shrink"></a>3.flex-shrink</h3><p>定义了当容器空间不足时，item是否缩小。默认值为1，表示当空间不足时，item自动缩小，其可能的值为整数，表示不同item的缩小比例。</p>
+<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<p>负值对该属性无效。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-90cabc0d1774a7f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/108/format/webp" alt="图片上传失败..."></p>
+<p>注意：当在容器中定义了<code>flex-wrap: wrap</code>，表示空间足够，则没有缩小的效果。</p>
+<h3 id="4-flex-basis属性"><a href="#4-flex-basis属性" class="headerlink" title="4.flex-basis属性"></a>4.flex-basis属性</h3><p><code>flex-basis</code>属性定义项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-ca170bb9cb844e0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/107/format/webp" alt="图片上传失败..."></p>
+<h3 id="5-flex属性"><a href="#5-flex属性" class="headerlink" title="5.flex属性"></a>5.flex属性</h3><p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<h3 id="6-align-self属性"><a href="#6-align-self属性" class="headerlink" title="6.align-self属性"></a>6.align-self属性</h3><p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+<ul>
+<li>auto：和父元素align-items的值一致</li>
+<li>flex-start： 交叉轴的起点对齐</li>
+<li>flex-end：交叉轴的终点对齐</li>
+<li>center：交叉轴的中点对齐</li>
+<li>baseline：项目的第一行文字的基线对齐</li>
+<li>stretch：如果项目未设置高度或设为auto，将占满整个容器的高度</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9437556-fb3c6e8819b9a954.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt="图片上传失败..."></p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/10/08/原型与原型链/" title= "原型与原型链">
+                    <div class="prevTitle">原型与原型链</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:weiyangle@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/ArvinWei" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/img/wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Flex的基本概念"><span class="toc-number">1.</span> <span class="toc-text">一、Flex的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、将元素指定为Flex布局"><span class="toc-number">2.</span> <span class="toc-text">二、将元素指定为Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、容器属性详述"><span class="toc-number">3.</span> <span class="toc-text">三、容器属性详述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-flex-direction"><span class="toc-number">3.1.</span> <span class="toc-text">1.flex-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-flex-wrap属性"><span class="toc-number">3.2.</span> <span class="toc-text">2.flex-wrap属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-flex-flow"><span class="toc-number">3.3.</span> <span class="toc-text">3.flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-justify-content属性"><span class="toc-number">3.4.</span> <span class="toc-text">4.justify-content属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-align-items属性"><span class="toc-number">3.5.</span> <span class="toc-text">5.align-items属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-align-content属性"><span class="toc-number">3.6.</span> <span class="toc-text">6.align-content属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、项目属性详述"><span class="toc-number">4.</span> <span class="toc-text">四、项目属性详述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-order属性"><span class="toc-number">4.1.</span> <span class="toc-text">1.order属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-flex-grow属性"><span class="toc-number">4.2.</span> <span class="toc-text">2.flex-grow属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-flex-shrink"><span class="toc-number">4.3.</span> <span class="toc-text">3.flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-flex-basis属性"><span class="toc-number">4.4.</span> <span class="toc-text">4.flex-basis属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-flex属性"><span class="toc-number">4.5.</span> <span class="toc-text">5.flex属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-align-self属性"><span class="toc-number">4.6.</span> <span class="toc-text">6.align-self属性</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 7
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2018/10/09/flex的用法/" >flex布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2018/10/08/从URL到页面展现发生了什么/" >从URL到页面展现发生了什么</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2018/10/08/原型与原型链/" >原型与原型链</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2018/09/30/SASS/" >SASS的用法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2018/09/30/Promise/" >Promise笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/Cookie/" >HTTP系列 -- 注册登录 + Cookie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/第二篇博客/" >使用 Hexo + GitHub 可以轻松搞出一个好看的博客</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="原型链"><span class="iconfont-archer">&#xe606;</span>原型链</span>
+    
+        <span class="sidebar-tag-name" data-tags="Promise"><span class="iconfont-archer">&#xe606;</span>Promise</span>
+    
+        <span class="sidebar-tag-name" data-tags="SASS"><span class="iconfont-archer">&#xe606;</span>SASS</span>
+    
+        <span class="sidebar-tag-name" data-tags="flex布局"><span class="iconfont-archer">&#xe606;</span>flex布局</span>
+    
+        <span class="sidebar-tag-name" data-tags="综合问题"><span class="iconfont-archer">&#xe606;</span>综合问题</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Wei Yangle"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
