@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>SASS的用法 · Arvin Wei&#39;s Studio</title>
+    <title>CSS3中的animation动画属性简介 · Arvin Wei&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Arvin&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">SASS的用法</a>
+                <a href="#" class="post-name">CSS3中的animation动画属性简介</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            SASS的用法
+            CSS3中的animation动画属性简介
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SASS">SASS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS3">CSS3</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">320</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.3k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/09/30</span>
+                    <span class="post-intro-time">2018/10/11</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,16 +401,87 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="SASS"><a href="#SASS" class="headerlink" title="SASS"></a>SASS</h1><p>就是去掉了分号和括号的一门语言</p>
-<h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><p>SCSS就是基于SASS语言的一套更适合前端工程师看的语言<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i -D parcel</span><br><span class="line">npx parcel index.html</span><br></pre></td></tr></table></figure></p>
-<p>可以自动的去编译SCSS的在线工具<br>还可以在codepen上自己切换SCSS的工具</p>
-<h2 id="嵌套选择器"><a href="#嵌套选择器" class="headerlink" title="嵌套选择器"></a>嵌套选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.nav &#123;</span><br><span class="line">  border: 1px solid;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">.nav &#123;</span><br><span class="line">  border: $border-width solid $grey;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>方便统一改样式，只需要改一处就行</p>
-<p>mixin</p>
-<p>可以把一堆代码写到一个地方，取个名字，然后在下面复用，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">@mixin debug &#123;</span><br><span class="line">  border: 1px solid red;</span><br><span class="line">  background: $grey;</span><br><span class="line">&#125;</span><br><span class="line">.nav &#123;</span><br><span class="line">  @include debug;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>高级用法，可以将其写成函数并带有参数，参数可以有默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">@mixin debug($border-color: red) &#123;</span><br><span class="line">  border: 1px solid $border-color;</span><br><span class="line">  background: $grey;</span><br><span class="line">&#125;</span><br><span class="line">.nav &#123;</span><br><span class="line">  @include debug;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">      &gt; li &#123;</span><br><span class="line">        @include debug(green)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">placeholder</span><br></pre></td></tr></table></figure></p>
-<p>将要用同样样式的选择器放在了一起，节省了样式的代码。（mixin并没节省代码，只是复制粘贴了）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$grey: #666;</span><br><span class="line">$border-width: 2px;</span><br><span class="line">%debug($border-color: red) &#123;</span><br><span class="line">  border: 1px solid $border-color;</span><br><span class="line">  background: $grey;</span><br><span class="line">&#125;</span><br><span class="line">.nav &#123;</span><br><span class="line">  @extend debug;</span><br><span class="line">   &gt; ul &#123;</span><br><span class="line">    background: white;</span><br><span class="line">      &gt; li &#123;</span><br><span class="line">        @extend debug(green)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>在CSS3中，有一个新的属性可以用来做一些简单的动画效果，这就是animation，中文意思就是动画。</p>
+<h3 id="一、首先我们来看看animation属性的兼容性（来源caniuse）"><a href="#一、首先我们来看看animation属性的兼容性（来源caniuse）" class="headerlink" title="一、首先我们来看看animation属性的兼容性（来源caniuse）"></a>一、首先我们来看看animation属性的兼容性（<a href="https://link.jianshu.com?t=http://caniuse.com/#search=animation" target="_blank" rel="noopener">来源caniuse</a>）</h3><p><img src="https://upload-images.jianshu.io/upload_images/3360875-aa9b97267e041eae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="animation属性兼容"></p>
+<h3 id="二、animation使用的简单例子"><a href="#二、animation使用的简单例子" class="headerlink" title="二、animation使用的简单例子"></a>二、animation使用的简单例子</h3><p>在这个例子中，我让一个从左移动到右，再移动回左边：<br>代码如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-a4471bd97d7d19b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/439/format/webp" alt="div移动"><br><a href="https://link.jianshu.com?t=http://jsbin.com/yijenebuho/edit?html,css,output" target="_blank" rel="noopener">实验地址</a></p>
+<h3 id="三、讲讲-keyframes动画的创建"><a href="#三、讲讲-keyframes动画的创建" class="headerlink" title="三、讲讲@keyframes动画的创建"></a>三、讲讲<code>@keyframes</code>动画的创建</h3><ul>
+<li><p>介绍<br>在使用animation为元素制作动画时，先要制定想要的动画效果，例如让div元素移动，又或者改变它的背景色，实现翻转效果等，这时候就要用到<code>@keyframes</code>为其创建动画的效果；</p>
+</li>
+<li><p><code>@keyframes</code>的写法<br>总的格式如下：</p>
+<p>@keyframes 动画的名字{<br>这里制定元素变化的效果<br>}</p>
+</li>
+<li><p><code>@keyframes</code>的几个关键词<br>1.<code>from</code>和<code>to</code>，标记元素的起始状态和结束状态，例如下面例子，元素的起始背景色是红色，使其慢慢变成蓝色就可以这样写；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-347be6c68aed3efd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/329/format/webp" alt="from和to"></p>
+<p>2.此外，状态变化也可以用百分比进行标识，添加动画在每个进度时的效果；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-f3ff66c070c8f945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/395/format/webp" alt="百分比表示动画效果进度"></p>
+</li>
+</ul>
+<p>PS：在 <code>@keyframes</code>中填写动画效果，结束是不能添加分号<code>;</code>的，否则没有效果，下面这个是错误的写法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-2edba99a372c0d20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/317/format/webp" alt="错误写法"></p>
+<hr>
+<h1 id="这里介绍animation的七大属性"><a href="#这里介绍animation的七大属性" class="headerlink" title="这里介绍animation的七大属性"></a>这里介绍animation的七大属性</h1><h3 id="一、animation-duration属性（持续时间）"><a href="#一、animation-duration属性（持续时间）" class="headerlink" title="一、animation-duration属性（持续时间）"></a>一、<code>animation-duration</code>属性（持续时间）</h3><ul>
+<li><p>介绍<br><code>animation-duration</code>是为动画制定持续的时间，一般以秒或者毫秒来计算，如果不填写该属性，则默认为0，没有动画效果；</p>
+</li>
+<li><p>写法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-3bf8a71fb9845606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/226/format/webp" alt=""></p>
+</li>
+</ul>
+<h3 id="二、animation-timing-function属性（时间曲线）"><a href="#二、animation-timing-function属性（时间曲线）" class="headerlink" title="二、animation-timing-function属性（时间曲线）"></a>二、<code>animation-timing-function</code>属性（时间曲线）</h3><ul>
+<li><p>介绍<br><code>animation-timing-function</code>属性是为动画制定从开始到结束时的播放速度曲线，比如由快到慢，或者由慢到快等；</p>
+</li>
+<li><p><code>animation-timing-function</code>的几个值<br>1.<code>linear</code>：表示动画一直以匀速进行播放；<code>贝赛尔函数cubic-bezier(0,0,0.25,1)</code><br>2.<code>ease</code>：默认值，表示动画先慢后快，在即将结束时再变慢；<code>cubic-bezier(0.25,0.1,0.25,1)</code><br>3.<code>ease-in</code>：动画由慢到快直至结束；<code>cubic-bezier(0.42,0,1,1)</code><br>4.<code>ease-out</code>：动画由快到慢直至结束；<code>cubic-bezier(0,0,0.58,1)</code><br>5.<code>ease-in-out</code>：动画由慢到快再到慢直至结束，与<code>ease</code>不同的是它均等得分为三份，而<code>ease</code>是只在结束时变慢；<code>cubic-bezier(0.42,0,0.58,1)</code><br>6.标注时间：也可以直接标注一个时间(以s做单位)来规定动画全称以该速度进行播放；<br>7.贝赛尔函数：也可以使用贝赛尔函数来对动画的播放时间曲线进行规定；<br><a href="https://link.jianshu.com?t=http://www.xuanfengge.com/cubic-bezier-bezier-css3-animation-tools.html" target="_blank" rel="noopener">关于贝赛尔函数点这里</a><br>这里是五个不同动画之间的效果对比：<br><a href="https://link.jianshu.com?t=http://jsbin.com/yedaqewexu/edit?html,css,output" target="_blank" rel="noopener">效果对比</a></p>
+</li>
+<li><p><code>animation-timing-function</code>写法</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-e221f7e78b2fd032.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/289/format/webp" alt="animation-timing-function"></p>
+</li>
+</ul>
+<h3 id="三、animation-delay属性（动画延迟时间）"><a href="#三、animation-delay属性（动画延迟时间）" class="headerlink" title="三、animation-delay属性（动画延迟时间）"></a>三、<code>animation-delay</code>属性（动画延迟时间）</h3><ul>
+<li><p>介绍<br>delay顾名思义是延迟的意思，该属性作用就是规定动画延迟多少时间进行播放的，以秒或者毫秒做单位，默认值为0，可以设置负数，设置负数时候，动画直接跳过负数时间段进行执行，例如：动画只有5s，设置该属性的值为-2s的时候，动画是直接从第三秒的位置开始的；</p>
+</li>
+<li><p><code>animation-delay</code>负值与正值的对比<br><a href="https://link.jianshu.com?t=http://jsbin.com/zeloculiho/edit?html,css,output" target="_blank" rel="noopener">实验地址</a></p>
+</li>
+<li><p><code>animation-delay</code>写法</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-d403e426c181cd47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250/format/webp" alt="animation-delay写法"></p>
+</li>
+</ul>
+<h3 id="四、animation-iteration-count属性（动画播放次数）"><a href="#四、animation-iteration-count属性（动画播放次数）" class="headerlink" title="四、animation-iteration-count属性（动画播放次数）"></a>四、<code>animation-iteration-count</code>属性（动画播放次数）</h3><ul>
+<li><p>介绍<br><code>iteration-count</code>这个连接词中，iteration的意思是反复，count的意思是次数。该属性制定动画的播放次数，默认是1，也就是播放一次，填写数字几就是播放几次，此外，还有值<code>infinite</code>是无限循环的意思；</p>
+</li>
+<li><p><code>animation-iteration-count</code>写法</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-333c9f0def854736.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/375/format/webp" alt="动画播放次数"></p>
+</li>
+</ul>
+<h3 id="五、animation-direction属性（动画反向播放）"><a href="#五、animation-direction属性（动画反向播放）" class="headerlink" title="五、animation-direction属性（动画反向播放）"></a>五、<code>animation-direction</code>属性（动画反向播放）</h3><ul>
+<li><p>介绍<br>该属性中，direction是方向的意思，该属性制定动画是否反方向播放，以及怎么样进行播放；</p>
+</li>
+<li><p><code>animation-direction</code>的四个值<br>1.normal：默认值，不进行反方向播放；<br>2.reverse：全部播放都是用反方向播放；<br>3.alternate：在奇数次数（1、3、5）的时候正向播放，偶数次数（2、4、6）进行反向播放；<br>4.alternate-reverse：在偶数次数（1、3、5）的时候正向播放，奇数次数（2、4、6）进行反向播放；</p>
+</li>
+</ul>
+<p><a href="https://link.jianshu.com?t=http://jsbin.com/zutuzogeco/edit?html,css,output" target="_blank" rel="noopener">四个值的播放对比</a></p>
+<ul>
+<li><code>animation-direction</code>的写法</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-b4469c6219c9685a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/408/format/webp" alt="animation-direction写法"></p>
+<h3 id="六、animation-fill-mode属性（动画保持开始或者结束时的样式）"><a href="#六、animation-fill-mode属性（动画保持开始或者结束时的样式）" class="headerlink" title="六、animation-fill-mode属性（动画保持开始或者结束时的样式）"></a>六、<code>animation-fill-mode</code>属性（动画保持开始或者结束时的样式）</h3><ul>
+<li><p>介绍<br><code>animation-fill-mode</code>属性制定动画是否保持开始时的样式，或者是结束时的样式，又或者两者皆有，比如在一次播放结束后，动画保持什么样的样式；</p>
+</li>
+<li><p><code>animation-fill-mode</code>属性的三个值<br>1.forwards：动画结束后保持结束时的样式；<br>2.backwards：动画结束后保持开始时的样式；<br>3.both：两者皆有；</p>
+</li>
+</ul>
+<p><a href="https://link.jianshu.com?t=http://jsbin.com/guzumuxoge/edit?html,css,output" target="_blank" rel="noopener">三个值之间的对比</a></p>
+<h3 id="七、animation-play-state属性（暂停动画）"><a href="#七、animation-play-state属性（暂停动画）" class="headerlink" title="七、animation-play-state属性（暂停动画）"></a>七、<code>animation-play-state</code>属性（暂停动画）</h3><ul>
+<li><p>介绍<br><code>animation-play-state</code>属性制定动画的运行状态，是运行还是暂停；</p>
+</li>
+<li><p><code>animation-play-state</code>属性的两个值<br>1.paused：动画暂停；<br>2.running：动画运行；</p>
+</li>
+<li><p>例子：点击按钮暂停动画或开始动画<br><a href="https://link.jianshu.com?t=http://jsbin.com/bogafozonu/edit?html,css,output" target="_blank" rel="noopener">暂停或运行动画</a></p>
+</li>
+</ul>
+<hr>
+<h1 id="最后说说animation的简写形式"><a href="#最后说说animation的简写形式" class="headerlink" title="最后说说animation的简写形式"></a>最后说说<code>animation</code>的简写形式</h1><p>格式如下：<br><strong><code>animation: name duration timing-function delay iteration-count direction fill-mode play-state;</code></strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3360875-e8b4535a3f3c7465.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/516/format/webp" alt="animation属性简写"></p>
+<p><a href="https://link.jianshu.com?t=http://jsbin.com/telonepaya/edit?output" target="_blank" rel="noopener">随便做做也感觉很漂亮</a></p>
 
     </article>
     <!-- license  -->
@@ -419,17 +490,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/10/08/从URL到页面展现发生了什么/" title= "从URL到页面展现发生了什么">
-                    <div class="nextTitle">从URL到页面展现发生了什么</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/09/30/Promise/" title= "Promise笔记">
-                    <div class="prevTitle">Promise笔记</div>
+                <a href= "/2018/10/09/flex的用法/" title= "flex布局">
+                    <div class="prevTitle">flex布局</div>
                 </a>
             
         </li>
@@ -548,7 +614,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SASS"><span class="toc-number">1.</span> <span class="toc-text">SASS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SCSS"><span class="toc-number">2.</span> <span class="toc-text">SCSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌套选择器"><span class="toc-number">2.1.</span> <span class="toc-text">嵌套选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">2.2.</span> <span class="toc-text">变量</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、首先我们来看看animation属性的兼容性（来源caniuse）"><span class="toc-number">1.</span> <span class="toc-text">一、首先我们来看看animation属性的兼容性（来源caniuse）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、animation使用的简单例子"><span class="toc-number">2.</span> <span class="toc-text">二、animation使用的简单例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、讲讲-keyframes动画的创建"><span class="toc-number">3.</span> <span class="toc-text">三、讲讲@keyframes动画的创建</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#这里介绍animation的七大属性"><span class="toc-number"></span> <span class="toc-text">这里介绍animation的七大属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、animation-duration属性（持续时间）"><span class="toc-number">1.</span> <span class="toc-text">一、animation-duration属性（持续时间）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、animation-timing-function属性（时间曲线）"><span class="toc-number">2.</span> <span class="toc-text">二、animation-timing-function属性（时间曲线）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、animation-delay属性（动画延迟时间）"><span class="toc-number">3.</span> <span class="toc-text">三、animation-delay属性（动画延迟时间）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、animation-iteration-count属性（动画播放次数）"><span class="toc-number">4.</span> <span class="toc-text">四、animation-iteration-count属性（动画播放次数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、animation-direction属性（动画反向播放）"><span class="toc-number">5.</span> <span class="toc-text">五、animation-direction属性（动画反向播放）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、animation-fill-mode属性（动画保持开始或者结束时的样式）"><span class="toc-number">6.</span> <span class="toc-text">六、animation-fill-mode属性（动画保持开始或者结束时的样式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、animation-play-state属性（暂停动画）"><span class="toc-number">7.</span> <span class="toc-text">七、animation-play-state属性（暂停动画）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后说说animation的简写形式"><span class="toc-number"></span> <span class="toc-text">最后说说animation的简写形式</span></a>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
